@@ -6,7 +6,7 @@ import spacy
 from keras.models import load_model
 import xgboost
 
-st.write(xgboost.__version__)
+st.title("Verbal violence detection")
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -129,5 +129,5 @@ try:
 
 
 except Exception as e:
-    st.write(e) 
+    st.write("Please upload wav file") 
 
