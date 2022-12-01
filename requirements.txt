@@ -5,7 +5,6 @@ regex
 spacy>=2.2.0,<3.0.0
 keras
 tensorflow
-sklearn
 scikit-learn
 xgboost==1.6.1
 pyxlsb
