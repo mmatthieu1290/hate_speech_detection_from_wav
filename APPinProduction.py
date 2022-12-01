@@ -8,12 +8,14 @@ import xgboost
 
 st.title("Verbal violence detection")
 
+st.write("This app detects if the wav file that you upload contains verbal violences.")
+
 nlp = spacy.load("en_core_web_sm")
 
 import speech_recognition as sr
 r = sr.Recognizer()
 
-wav_file = st.file_uploader("Upload wav",type = ["wav"])
+wav_file = st.file_uploader(" ",type = ["wav"])
 
 sentences = []   
 
