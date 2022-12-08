@@ -20,13 +20,16 @@ wav_file = st.file_uploader(" ",type = ["wav"])
 sentences = []   
 
 try:
+    st.write("Listening the wav file...")  
     sound_file = AudioSegment.from_wav(wav_file)
     audio_chunks = split_on_silence(sound_file, min_silence_len=500, silence_thresh=-40 )
     list_chuncks = []
-    for i, chunk in enumerate(audio_chunks):
+    for i, chunk in enumerate(audio_chunks): 
      out_file = "chunk{0}.wav".format(i)
      chunk.export(out_file, format="wav")
      list_chuncks.append(out_file)
+    st.write("Converting sounds to english language...")
+    not_understood = 0 
     for wave_sentence_name in list_chuncks: 
      with sr.AudioFile(wave_sentence_name) as source:
       audio = r.listen(source)
@@ -35,8 +38,10 @@ try:
       text = re.sub(r'f[*]+','fuck',text)
       text = re.sub(r's[*]+','suck',text)      
       sentences.append(text)
-     except Exception as e:
-      st.write("Exception: en_core_web_md"+str(e))
+     except:
+      not_understood += 1
+    st.write(f"Warning: {not_understood} sentences not understood.")
+    st.write(f" {len(sentences)} sentences have beed understood.")  
     import pandas as pd            
     df = pd.DataFrame(columns=['Sentences'])
     df['Sentences'] = sentences
