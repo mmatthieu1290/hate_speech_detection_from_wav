@@ -20,10 +20,10 @@ wav_file = st.file_uploader(" ",type = ["wav"])
 sentences = []   
 
 try:
-    st.write("Listening the wav file...")  
     sound_file = AudioSegment.from_wav(wav_file)
     audio_chunks = split_on_silence(sound_file, min_silence_len=500, silence_thresh=-40 )
     list_chuncks = []
+    st.write("Listening the wav file...")  
     for i, chunk in enumerate(audio_chunks): 
      out_file = "chunk{0}.wav".format(i)
      chunk.export(out_file, format="wav")
