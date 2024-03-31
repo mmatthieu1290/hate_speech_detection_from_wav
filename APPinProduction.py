@@ -8,7 +8,7 @@ import xgboost
 
 st.title("Verbal violence detection")
 
-st.write("This app detects if the wav file that you upload contains verbal violences.")
+st.write("This app detects if the wav file that you upload contains verbal violences, only in english language.")
 
 nlp = spacy.load("en_core_web_sm")
 
